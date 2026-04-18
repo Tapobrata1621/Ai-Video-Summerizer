@@ -3,6 +3,7 @@ AI Video Summarizer:
 AI Video Summarizer is a smart web-based application that converts long videos into concise and meaningful summaries. It helps users quickly understand the key points of any video without watching the entire content.
 
 🚀 Features:
+
 🎥 Upload long video files
 🧠 Automatic speech-to-text conversion
 ✂️ Generates short and clear summaries
