@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Video Summarizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background-blobs">
+        <span class="blob blob1"></span>
+        <span class="blob blob2"></span>
+        <span class="blob blob3"></span>
+    </div>
+
+    <main class="page-wrap">
+        <section class="hero-card">
+            <div class="badge">AI Powered</div>
+            <h1>🎥 AI Video Summarizer</h1>
+            <p class="subtitle">
+                Upload a video, extract speech, generate transcript, and get a smart summary in seconds.
+            </p>
+
+            <form method="POST" enctype="multipart/form-data" class="upload-form" id="uploadForm">
+                <label for="video-upload" class="drop-zone" id="dropZone">
+                    <div class="drop-icon">📁</div>
+                    <h3>Drag & Drop Your Video Here</h3>
+                    <p>or click to browse file</p>
+                    <span class="browse-btn">Choose Video</span>
+                    <input id="video-upload" type="file" name="video" accept=".mp4,.mov,.avi,.mkv" required>
+                </label>
+
+                <div class="file-name" id="fileName">
+                    {% if uploaded_filename %}
+                        Selected File: {{ uploaded_filename }}
+                    {% else %}
+                        No file selected
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">⚡ Upload & Summarize</span>
+                    <span class="loader hidden" id="loader"></span>
+                </button>
+            </form>
+
+            {% if error %}
+            <div class="message-card error-card">
+                <h3>⚠ Error</h3>
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+        </section>
+
+        {% if transcript or summary %}
+        <section class="results-grid">
+            {% if transcript %}
+            <div class="result-card">
+                <div class="card-top">
+                    <span class="card-tag">Transcript</span>
+                </div>
+                <h2>📝 Extracted Transcript</h2>
+                <p>{{ transcript }}</p>
+            </div>
+            {% endif %}
+
+            {% if summary %}
+            <div class="result-card summary-card">
+                <div class="card-top">
+                    <span class="card-tag pink">Summary</span>
+                </div>
+                <h2>✨ Smart Summary</h2>
+                <p>{{ summary }}</p>
+            </div>
+            {% endif %}
+        </section>
+        {% endif %}
+    </main>
+
+    <script>
+        const fileInput = document.getElementById("video-upload");
+        const fileName = document.getElementById("fileName");
+        const dropZone = document.getElementById("dropZone");
+        const form = document.getElementById("uploadForm");
+        const submitBtn = document.getElementById("submitBtn");
+        const loader = document.getElementById("loader");
+        const btnText = document.querySelector(".btn-text");
+
+        fileInput.addEventListener("change", function () {
+            if (fileInput.files.length > 0) {
+                fileName.textContent = "Selected File: " + fileInput.files[0].name;
+            } else {
+                fileName.textContent = "No file selected";
+            }
+        });
+
+        ["dragenter", "dragover"].forEach(eventName => {
+            dropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropZone.classList.add("dragover");
+            });
+        });
+
+        ["dragleave", "drop"].forEach(eventName => {
+            dropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropZone.classList.remove("dragover");
+            });
+        });
+
+        dropZone.addEventListener("drop", (e) => {
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                fileName.textContent = "Selected File: " + files[0].name;
+            }
+        });
+
+        form.addEventListener("submit", function () {
+            loader.classList.remove("hidden");
+            btnText.textContent = "Processing...";
+            submitBtn.disabled = true;
+        });
+    </script>
+</body>
+</html>

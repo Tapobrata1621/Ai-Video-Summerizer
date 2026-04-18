@@ -1,0 +1,7 @@
+Flask
+moviepy
+openai-whisper
+nltk
+torch
+werkzeug
+imageio-ffmpeg
