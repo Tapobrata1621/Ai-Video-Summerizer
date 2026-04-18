@@ -13,10 +13,17 @@ AI Video Summarizer is a smart web-based application that converts long videos i
 
 🛠️ Technologies Used:
 
-Frontend: HTML, CSS, JavaScript
-Backend: Python (FastAPI / Flask)
-AI Models: Speech Recognition (Whisper), NLP for summarization
-Other Tools: FFmpeg for video/audio processing
+Frontend: 
+HTML, CSS, JavaScript
+
+Backend:
+Python (FastAPI / Flask)
+
+AI Models:
+Speech Recognition (Whisper), NLP for summarization
+
+Other Tools:
+FFmpeg for video/audio processing
 
 ⚙️ How It Works:
 
