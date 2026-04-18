@@ -49,7 +49,7 @@ AI-Video-Summarizer/
 
 ▶️ Installation & Setup:
 
-git clone https://github.com/your-username/ai-video-summarizer.git
+git clone: https://github.com/your-username/ai-video-summarizer.git
 
 cd ai-video-summarizer
 
@@ -71,6 +71,7 @@ WEBSITE IS RUNNING ON: http://127.0.0.1:5000
 ☁️ Cloud deployment
 📱 Mobile responsive UI
 
-👨‍💻 Author
+👨‍💻 Author:
+
 Tapobrata Kabiraj
 
