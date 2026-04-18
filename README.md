@@ -36,17 +36,25 @@ Generate a short summary
 📂 Project Structure:
 
 AI-Video-Summarizer/
+
 │── static/
+
 │── templates/
+
 │── main.py
+
 │── requirements.txt
+
 │── README.md
 
 ▶️ Installation & Setup:
 
 git clone https://github.com/your-username/ai-video-summarizer.git
+
 cd ai-video-summarizer
+
 pip install -r requirements.txt
+
 uvicorn main:app --reload
 
 WEBSITE IS RUNNING ON: http://127.0.0.1:5000
